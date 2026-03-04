@@ -1,0 +1,51 @@
+{
+  "name": "my-medical-app",
+  "version": "1.0.0",
+  "description": "This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).",
+  "main": "eslint.config.js",
+  "devDependencies": {
+    "@react-native-community/cli-server-api": "^20.1.1",
+    "@tsconfig/node20": "^20.1.9",
+    "@types/hammerjs": "^2.0.46",
+    "@types/react": "~19.1.10",
+    "eslint": "^9.39.2",
+    "eslint-config-expo": "^10.0.0",
+    "metro": "^0.83.1",
+    "metro-core": "^0.83.3",
+    "metro-resolver": "^0.83.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@firebase/app": "^0.14.8",
+    "@firebase/auth": "^1.12.0",
+    "@firebase/firestore": "^4.11.0",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-picker/picker": "2.11.1",
+    "eslint-config-expo": "~10.0.0",
+    "expo": "54.0.33",
+    "expo-constants": "~18.0.13",
+    "expo-image": "~3.0.11",
+    "expo-linking": "~8.0.11",
+    "expo-router": "~6.0.23",
+    "expo-splash-screen": "~31.0.13",
+    "expo-status-bar": "~3.0.9",
+    "firebase": "^10.7.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-get-random-values": "~1.11.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-url-polyfill": "^3.0.0",
+    "react-native-web": "^0.21.0",
+    "react-native-worklets": "0.5.1",
+    "typescript": "~5.9.2"
+  }
+}
