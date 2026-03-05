@@ -9,14 +9,15 @@ module.exports = async (req, res) => {
   const userId = req.query.userId ? parseInt(req.query.userId) : 0;
 
   try {
-    let result;
+    let rows;
     if (userId) {
-      result = await pool.query('SELECT * FROM medical_alerts WHERE user_id=$1 ORDER BY sent_at DESC', [userId]);
+      [rows] = await pool.query('SELECT * FROM medical_alerts WHERE user_id=? ORDER BY sent_at DESC', [userId]);
     } else {
-      result = await pool.query('SELECT * FROM medical_alerts WHERE hidden_staff=0 ORDER BY sent_at DESC');
+      [rows] = await pool.query('SELECT * FROM medical_alerts WHERE hidden_staff=0 ORDER BY sent_at DESC');
     }
-    res.json({ success: true, alerts: result.rows });
+    res.json({ success: true, alerts: rows });
   } catch (err) {
-    res.json({ success: false, error: err.message });
+    console.log('DB ERROR:', err);
+    res.json({ success: false, error: err.message, code: err.code, stack: err.stack });
   }
 };

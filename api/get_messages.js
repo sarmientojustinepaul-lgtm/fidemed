@@ -12,8 +12,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const result = await pool.query('SELECT * FROM messages WHERE alert_id=$1 ORDER BY sent_at ASC', [alertId]);
-    res.json({ success: true, messages: result.rows });
+    const [rows] = await pool.query('SELECT * FROM messages WHERE alert_id=? ORDER BY sent_at ASC', [alertId]);
+    res.json({ success: true, messages: rows });
   } catch (err) {
     res.json({ success: false, error: err.message });
   }

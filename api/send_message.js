@@ -12,11 +12,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      'INSERT INTO messages (alert_id, sender_role, message) VALUES ($1, $2, $3) RETURNING id',
+    const [result] = await pool.query(
+      'INSERT INTO messages (alert_id, sender_role, message) VALUES (?, ?, ?)',
       [alertId, senderRole, message]
     );
-    res.json({ success: true, id: result.rows[0].id });
+    res.json({ success: true, id: result.insertId });
   } catch (err) {
     res.json({ success: false, error: err.message });
   }

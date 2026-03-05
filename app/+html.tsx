@@ -10,7 +10,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <ScrollViewStyleReset />
         <script dangerouslySetInnerHTML={{
           __html: `
-            var BASE_URL = 'https://fidmed.vercel.app/api';
+            var BASE_URL = 'http://172.16.143.5:3000/api';
             var lastAlertIds = [];
 
             (function() {

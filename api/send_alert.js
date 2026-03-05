@@ -12,11 +12,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      'INSERT INTO medical_alerts (patient_name, age, grade_level, room_location, symptom_description, urgency_level, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
+    const [result] = await pool.query(
+      'INSERT INTO medical_alerts (patient_name, age, grade_level, room_location, symptom_description, urgency_level, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
       [patientName, age, gradeLevel, roomLocation, symptomDescription, urgencyLevel || 'Level 1', userId || 0]
     );
-    res.json({ success: true, id: result.rows[0].id });
+    res.json({ success: true, id: result.insertId });
   } catch (err) {
     res.json({ success: false, error: err.message });
   }

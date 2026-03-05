@@ -13,8 +13,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const result = await pool.query('SELECT * FROM users WHERE email=$1', [email]);
-    const user = result.rows[0];
+    const [rows] = await pool.query('SELECT * FROM users WHERE email=?', [email]);
+    const user = rows[0];
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.json({ success: false, error: 'Invalid credentials' });
     }

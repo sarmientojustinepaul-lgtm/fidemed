@@ -14,13 +14,13 @@ module.exports = async (req, res) => {
 
   try {
     const hashed = bcrypt.hashSync(password, 10);
-    const result = await pool.query(
-      'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id',
+    const [result] = await pool.query(
+      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
       [name, email, hashed, role]
     );
-    res.json({ success: true, id: result.rows[0].id });
+    res.json({ success: true, id: result.insertId });
   } catch (err) {
-    if (err.code === '23505') {
+    if (err.code === 'ER_DUP_ENTRY') {
       res.json({ success: false, error: 'Email already exists' });
     } else {
       res.json({ success: false, error: err.message });

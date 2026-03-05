@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await pool.query('UPDATE medical_alerts SET hidden_staff=1 WHERE id=$1', [id]);
+    await pool.query('UPDATE medical_alerts SET hidden_staff=1 WHERE id=?', [id]);
     res.json({ success: true });
   } catch (err) {
     res.json({ success: false, error: err.message });

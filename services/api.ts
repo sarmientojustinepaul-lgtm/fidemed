@@ -1,5 +1,5 @@
 // services/api.ts
-export const BASE_URL = 'http://192.168.8.43/fidemed';
+export const BASE_URL = 'http://172.16.143.5/fidemed';
 
 export type LoginResult = {
   success: boolean;
